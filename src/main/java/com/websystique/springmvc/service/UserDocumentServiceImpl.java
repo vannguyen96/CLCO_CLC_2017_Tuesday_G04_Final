@@ -16,29 +16,24 @@ public class UserDocumentServiceImpl implements UserDocumentService{
 	@Autowired
 	UserDocumentDao dao;
 
-	public UserDocument findByPath(String path) {
-		return dao.findByPath(path);
+	public UserDocument findById(int id) {
+		return dao.findById(id);
 	}
 
+	public List<UserDocument> findAll() {
+		return dao.findAll();
+	}
+
+	public List<UserDocument> findAllByUserId(int userId) {
+		return dao.findAllByUserId(userId);
+	}
+	
 	public void saveDocument(UserDocument document){
 		dao.save(document);
 	}
 
-	@Override
-	public List<UserDocument> loadTop3News() {
-		return dao.findTop3();
+	public void deleteById(int id){
+		dao.deleteById(id);
 	}
-
-	@Override
-	public UserDocument findById(int id) {
-		// TODO Auto-generated method stub
-		return dao.findById(id);
-	}
-
-	@Override
-	public void updateDocument(UserDocument document) {
-		// TODO Auto-generated method stub
-		dao.update(document);
-	}
-
+	
 }

@@ -6,9 +6,13 @@ import com.websystique.springmvc.model.UserDocument;
 
 public interface UserDocumentService {
 
-	UserDocument findByPath(String path);
 	UserDocument findById(int id);
+
+	List<UserDocument> findAll();
+	
+	List<UserDocument> findAllByUserId(int id);
+	
 	void saveDocument(UserDocument document);
-	void updateDocument(UserDocument document);
-	List<UserDocument> loadTop3News();
+	
+	void deleteById(int id);
 }

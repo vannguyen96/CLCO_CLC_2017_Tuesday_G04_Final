@@ -1,9 +1,5 @@
 package com.websystique.springmvc.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,18 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="user_document")
+@Table(name="USER_DOCUMENT")
 public class UserDocument {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;	
 	
-	@Column(name="path", length=100, nullable=false)
-	private String path;
+	@Column(name="name", length=100, nullable=false)
+	private String name;
 	
 	@Column(name="description", length=255)
 	private String description;
@@ -42,8 +36,6 @@ public class UserDocument {
 	@JoinColumn(name = "USER_ID")
 	private User user;
 	
-	@Column(name="datetime", nullable=false)
-	private String datetime;
 	
 	public Integer getId() {
 		return id;
@@ -53,12 +45,12 @@ public class UserDocument {
 		this.id = id;
 	}
 
-	public String getPath() {
-		return path;
+	public String getName() {
+		return name;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -92,21 +84,13 @@ public class UserDocument {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	public String getDate() {
-		return datetime;
-	}
-
-	public void setDate(String datetime) {
-		this.datetime = datetime;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -124,17 +108,17 @@ public class UserDocument {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (path == null) {
-			if (other.path != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!path.equals(other.path))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "UserDocument [id=" + id + ", path=" + path + ", description="
+		return "UserDocument [id=" + id + ", name=" + name + ", description="
 				+ description + ", type=" + type + "]";
 	}
 

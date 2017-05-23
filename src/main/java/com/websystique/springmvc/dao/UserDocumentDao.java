@@ -6,10 +6,13 @@ import com.websystique.springmvc.model.UserDocument;
 
 public interface UserDocumentDao {
 
+	List<UserDocument> findAll();
+	
+	UserDocument findById(int id);
+	
 	void save(UserDocument document);
 	
-	UserDocument findByPath(String path);
-	List<UserDocument> findTop3();
-	void update(UserDocument document);
-	UserDocument findById(int id);
+	List<UserDocument> findAllByUserId(int userId);
+	
+	void deleteById(int id);
 }
